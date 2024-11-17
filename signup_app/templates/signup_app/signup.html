@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'signup_app/css/signup.css' %}">
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-div">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.username.errors %}
+        <div class="span-div">
+            <span>
+                {{ form.username.errors.0 }}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-div">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.email.errors %}
+            <span>
+                {{ form.email.errors.0 }}
+            </span>
+        {% endif %}
+    </div>
+    <div class="form-div">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+        <div class="span-div">
+            <span>
+                {{ form.password1.errors.0 }}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-div">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+        <div class="span-div">
+            <span>
+                {{ form.password2.errors.0 }}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-div">
+        <button type="submit">registrar</button>
+    </div>
+
+</form>
+{% endblock %}

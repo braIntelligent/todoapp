@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'login_app/css/login.css' %}">
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-div">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+    <div class="form-div">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        {% if form.errors %}
+        {% for error in form.non_field_errors %}
+        <span>
+            {{ error }}
+        </span>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="form-div">
+        <button type="submit">ingresar</button>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'todo_app/css/todoapp.css' %}">
+<main>
+
+    <form class="form-div" method="post">
+        {% csrf_token %}
+        {{ form.title.label_tag }}
+        {{ form.title }}
+        {{ form.title.errors }}
+    </form>
+
+    <div class="div-tasks">
+        {% if tasks %}
+        {% for task in tasks %}
+        <div class="div-task">
+            {% if task.status == 'P' %}
+            <div class="title">
+                <a href="{% url 'updatetask' task.id %}">
+                    <h2>
+                        {{ task.title }}
+                    </h2>
+                </a>
+            </div>
+            {% else %}
+            <div class="title">
+                <a href="{% url 'updatetask' task.id %}">
+                    <h2 class="trought">
+                        {{ task.title }}
+                    </h2>
+                </a>
+            </div>
+            {% endif %}
+            <div class="buttons">
+                <a href="{% url 'tasktoggle' task.id %}">
+                    <img src="{% static 'todo_app/img/done.png' %}" title="DONE">
+                </a>
+                <a href="{% url 'deletetask' task.id %}">
+                    <img src="{% static 'todo_app/img/delete.png' %}" title="DELETE">
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
