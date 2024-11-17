@@ -52,3 +52,6 @@ def task_toggle_status(request, task_id):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)

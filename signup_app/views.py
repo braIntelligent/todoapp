@@ -14,3 +14,6 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'signup_app/signup.html', {'form': form})
+
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)

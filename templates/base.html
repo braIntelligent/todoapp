@@ -23,7 +23,7 @@
             <div class="header-div">
                 <h1>Signup</h1>
             </div>
-        {% else %}
+        {% elif request.resolver_match.url_name == 'taskslist' %}
             <div class="link">
                 <a href="{% url 'logout' %}">logout</a>
             </div>
