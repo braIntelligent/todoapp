@@ -134,3 +134,6 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 HANDLER404 = 'project.views.custom_404'
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
